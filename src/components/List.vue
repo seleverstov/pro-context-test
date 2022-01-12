@@ -52,7 +52,6 @@ export default {
       if (!this.$store.getters.isAllChecked(this.list) && event.target.checked) {
         this.$store.commit('checkAll', this.list);
       } else {
-        console.log('uncheck');
         this.$store.commit('uncheckAll', this.list);
       }
     },
@@ -71,7 +70,23 @@ export default {
   &:hover {
     background: lightcyan;
   }
-  &-checkbox {
+  &-checkbox:before {
+    border: 3px solid transparent;
+    background-color: white;
+    box-sizing: border-box;
+    content: '';
+    display: inline-block;
+    height: 12px;
+    outline: 1px solid black;
+    width: 12px;
+  }
+  &-checkbox:checked:before {
+    content:'';
+    opacity: 0;
+  }
+  &-checkbox:indeterminate:before {
+    background-color: black;
+    border-color: white;
   }
 }
 </style>
