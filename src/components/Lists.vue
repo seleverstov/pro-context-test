@@ -10,9 +10,10 @@ import List from './List.vue';
 export default {
   name: 'Lists',
   components: { List },
-  computed: {
-    lists() {
-      return this.$store.state.lists;
+  props: {
+    lists: {
+      type: Array,
+      required: true,
     },
   },
 };

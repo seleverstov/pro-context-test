@@ -18,6 +18,7 @@
      <input
        v-else
        @change="countChanged"
+       :min="0"
        :value="item.value"
        @click.stop
        class="item-value-new-number"
@@ -50,7 +51,8 @@ export default {
   },
   methods: {
     countChanged(event) {
-      const newItem = { ...this.item, value: event.target.value };
+      if (event.target.value < 0) return;
+      const newItem = { ...this.item, value: Number(event.target.value) };
       this.changeItem(newItem);
     },
     colorChanged(event) {
